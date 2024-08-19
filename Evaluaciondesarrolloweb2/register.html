@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crea tu cuenta aqui!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Inter', sans-serif;
+        }
+
+        #container2 {
+    margin: 50px auto; /* Esto centrará el contenedor horizontalmente */
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+
+        .form-floating {
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            width: 100%;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+            font-family: Inter;
+            font-weight: bold;
+        }
+
+        .success {
+            color: green;
+            margin-top: 10px;
+            font-family: Inter;
+            font-weight: bold;
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        #myVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4); /* Fondo negro semi-transparente */
+    z-index: 0; /* Debajo del contenido pero sobre el video */
+  }
+
+  @media (max-width: 460px) {
+    h2 {
+        font-size: 40px !important;
+    }
+
+    .bi-shop {
+        font-size: 22px !important;
+    }
+
+    #container2{
+        width: 340px;
+    }
+
+    .navbar form{
+        display:none;
+    }
+}
+
+@media (max-width: 383px) {
+    h2 {
+        font-size: 37px !important;
+    }
+
+    .bi-shop {
+        font-size: 37px !important;
+    }
+
+    #container2{
+        width: 330px;
+    }
+}
+
+@media (max-width: 1109px) {
+    h2 {
+        font-size: 38px !important;
+    }
+
+    .bi-shop {
+        font-size: 32px !important;
+    }
+
+    #container2{
+        width: 340px;
+    }
+
+    .navbar form{
+        display:none;
+    }
+
+    h5 {
+        font-size: 25px !important;
+    }
+}
+
+    </style>
+</head>
+<body>
+<video autoplay muted loop id="myVideo">
+  <source src="tecno.mp4" type="video/mp4">
+  Tu navegador no soporta el elemento de video.
+</video>
+<div class="overlay"></div>
+<nav class="navbar bg-light p-4">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between">
+        <a class="navbar-brand d-flex align-items-center" href="" style="color:white; font-family:Inter; font-weight:bold;">
+            <i class="bi bi-cpu "style="color:dodgerblue;"></i>
+            <span style="font-size: 80%; margin-left: 5px;"></span>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a style="font-family: Inter; font-weight: bold; font-size:13px; color:dodgerblue;" href="marketplace.html" class="nav-link px-2 link-light">Market</a></li>
+            <li><a style="font-family: Inter; font-weight: bold; font-size:13px; color:dodgerblue;"" href="login.html" class="nav-link px-2 link-light">Ingresar</a></li>
+        </ul>
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+            <input id="searchInput" type="search" class="form-control" placeholder="Search..." aria-label="Search">
+        </form>
+
+    </div>
+</nav>
+
+
+<div class="container col-xl-10 col-xxl-8 px-4 py-5" data-aos="zoom-in">
+    <div class="row align-items-center g-lg-5 py-5">
+        <div class="col-lg-7 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3" style="color:white;">TechSpot-electronics, el lugar para comprar articulos electronicos de forma rapida y segura!</h1>
+            <p class="col-lg-10 fs-4" style="color:aliceblue;">Crea tu cuenta aqui, tenemos los mejores productos electronicos.</p>
+        </div>
+        <div class="col-md-10 mx-auto col-lg-5">
+            <div id="container2" class="text-center  shadow">
+                <i class="bi bi-cpu icon mb-3" style=" color:dodgerblue;"></i>
+                <h4 style="font-weight: bold; font-size: 22px;">Crear Cuenta</h4>
+                <br>
+                <?php if(isset($error)) { ?>
+         
+
+                <form style="font-size: 13px;" method="post" action="register.php">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" required>
+                        <label for="name">Nombre</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Correo" required>
+                        <label for="email">Correo</label>
+                    </div>
+                    
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
+                        <label for="password">Contraseña</label>
+                    </div>
+                    
+                    
+                    <button style="font-size:15px;"type="submit" class="w-100 btn btn-lg btn-primary">Registrarse</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<br><br><br><br><br>
+
+
+<script>
+        AOS.init();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,701 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Market - TechSpot </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- AOS CSS -->
+
+    <style>
+
+.card.zoom {
+      transition: transform 0.3s ease;
+    }
+    .card.zoom:hover {
+      transform: scale(1.02);
+    }
+        /* Estilo para cards */
+        .card {
+            height: 100%;
+            border-radius: 26px !important;
+            
+        }
+        /* Estilo para descripción con scroll horizontal */
+        .card-text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .truncate-text {
+    font-family: Inter;
+    font-size: 14px;
+    margin-bottom: 10px;
+    max-height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; /* Añade puntos suspensivos (...) cuando se trunca el texto */
+}
+
+.no-products {
+            display: none;
+            font-family: Inter, sans-serif;
+            font-weight: bold;
+            color: #666;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .container-narrow {
+        max-width: 1790px; /* Ancho máximo deseado */
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .video-container {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            max-width: 1920px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .video-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+        .video-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            color: white;
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+    .video-content h2 {
+        font-size: 29px; /* Ajusta el tamaño del texto */
+    }
+
+    .video-content h2 i {
+        font-size: 18px; /* Ajusta el tamaño del ícono */
+    }
+
+    .video-content h5 {
+        font-size: 14px; /* Ajusta el tamaño del texto secundario */
+    }
+
+    .video-content span {
+        font-size: 16px; /* Ajusta el tamaño del span */
+    }
+
+    .video-content a {
+        font-size: 12px; /* Ajusta el tamaño del texto de los enlaces */
+    }
+}
+
+@media (max-width: 420px) {
+    .video-content h2 {
+        font-size: 23px; /* Ajusta el tamaño del texto */
+    }
+
+    .video-content h2 i {
+        font-size: 22px; /* Ajusta el tamaño del ícono */
+    }
+
+    .video-content h5 {
+        font-size: 14px; /* Ajusta el tamaño del texto secundario */
+    }
+
+    .video-content span {
+        font-size: 16px; /* Ajusta el tamaño del span */
+    }
+
+    .video-content a {
+        font-size: 12px; /* Ajusta el tamaño del texto de los enlaces */
+    }
+}
+@media (max-width: 768px) {
+    .video-content h2 {
+        font-size: 38px; /* Tamaño del texto para pantallas medianas y más grandes */
+    }
+
+    .video-content h2 i {
+        font-size: 40px; /* Tamaño del ícono para pantallas medianas y más grandes */
+    }
+
+}
+
+
+
+@media (min-width: 768px) {
+    .video-content h2 {
+        font-size: 42px; /* Tamaño del texto para pantallas medianas y más grandes */
+    }
+
+    .video-content h2 i {
+        font-size: 44px; /* Tamaño del ícono para pantallas medianas y más grandes */
+    }
+
+    .video-content h5 {
+        font-size: 18px; /* Tamaño del texto secundario para pantallas medianas y más grandes */
+    }
+
+    .video-content span {
+        font-size: 24px; /* Tamaño del span para pantallas medianas y más grandes */
+    }
+
+    .video-content a {
+        font-size: 16px; /* Tamaño del texto de los enlaces para pantallas medianas y más grandes */
+    }
+    .btn-custom{
+        font-size: 1px;
+    }
+}
+
+.btn-custom {
+        font-family: Inter;
+        font-size: 13px;
+        color: white;
+    }
+
+    @media (max-width: 548px) {
+
+
+        .btn-custom {
+            font-size: 10px !important; /* Ajusta el tamaño de la fuente según sea necesario */
+        }
+
+        .video-container{
+            display:none;
+        }
+
+        .btn-custom i {
+            font-size: 10px !important; /* Ajusta el tamaño del icono según sea necesario */
+        }
+
+
+
+}
+
+
+    @media (max-width: 613px) {
+        
+        .video-content h2 {
+            font-size: 33px !important; /* Ajusta el tamaño de la fuente según sea necesario */
+        }
+
+        @media (max-width: 543px) {
+        .video-content h2 {
+            font-size: 28px !important; /* Ajusta el tamaño de la fuente según sea necesario */
+        }
+
+    }
+
+        .btn-custom i {
+            font-size: 10px !important; /* Ajusta el tamaño del icono según sea necesario */
+        }
+    }
+
+    @media (min-width: 992px) {
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 999; /* Asegúrate de que esté encima de otros elementos */
+    }
+    .video-container{
+        margin-top: 80px;
+    }
+}
+
+    .navbar .btn .badge {
+        top: 80%; /* Ajusta el valor para posicionar el contador más abajo */
+        transform: translate(-50%, -50%);
+    }
+
+
+
+    </style>
+</head>
+<body>  
+    <nav class="navbar bg-light p-3">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between">
+            <a class="navbar-brand d-flex align-items-center" href="marketplace.php" style="color:white; font-family:Inter; font-weight:bold;">
+                <i class="bi bi-cpu" style="color:dodgerblue;"></i>
+                <span style="font-size: 15px; margin-left: 5px; color:black;">TechSpot</span>
+            </a>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 align-items-center">
+                <li><a style="font-family: Inter; font-weight: bold;  font-size:14px; color:dodgerblue;" href="login.html" class="nav-link px-2 link-light">Iniciar Sesion</a></li>
+                <li><a style="font-family: Inter; font-weight: bold; ; font-size:14px; color:dodgerblue;" href="register.html" class="nav-link px-2 link-light">Registrarse</a></li>
+            </ul>
+<div class="d-flex align-items-center">
+    <a href="#" class="btn btn-light position-relative" data-bs-toggle="offcanvas" data-bs-target="#cartOffCanvas" aria-controls="cartOffCanvas">
+        <i class="bi bi-cart" style="font-size: 1.5rem;"></i>
+        <span class="position-absolute top-50 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">0</span>
+    </a>
+</div>
+
+        </div>
+    </nav>
+    
+<div class="video-container">
+        <video autoplay muted loop class="video-background">
+            <source src="tecno.mp4" type="video/mp4">
+            Tu navegador no soporta la etiqueta de video.
+        </video>
+        <!-- Overlay semi-transparente -->
+        <div class="video-overlay"></div>
+        <!-- Contenido superpuesto -->
+        <div class="video-content">
+        <h2 class="mb-2" style="font-family: Inter; font-weight: bold; text-align:center;" data-aos="fade-in">
+    Techspot Electronics 
+    <i class="bi bi-cpu " style="color:dodgerblue;"></i>
+    <h5 style="font-family: Inter; text-align:center; font-size:18px; color:white; font-weight:200;" data-aos="fade-in">
+       Aqui podras encontrar los mejores productos electronicos y electrodomesticos.
+    </h5>
+    <span style="font-family: Inter; font-weight: normal; font-size:24px;"></span>
+
+    
+</h2>
+        </div>
+    </div> 
+
+<div  class="container-narrow">
+    
+    <br>
+
+
+    <div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3" id="productList">
+
+            <!-- Card 1 -->
+<!-- Card 1 -->
+<div class="col mb-1 mb-4">
+    <div class="card zoom shadow" data-aos="fade-out">
+        <div class="d-flex justify-content-center align-items-center" style="height: 180px;">
+            <img style="border-radius: 26px !important; object-fit: cover; max-width: 100%; max-height: 100%;" src="https://imagedelivery.net/4fYuQyy-r8_rpBpcY7lH_A/falabellaCL/16907151_01/w=800,h=800,fit=pad" class="card-img-top" alt="">
+        </div>
+        <div class="card-body">
+            <p style="font-family:Inter; font-weight:bold; color:green; font-size:20px; margin-bottom: 4px;">$999.990</p>
+            <h5 style="font-family:Inter; font-weight:bold; font-size:14px; margin-bottom: 3px; overflow-y: auto; max-height: 23px;" class="card-title">Iphone 15</h5>
+            <p style="font-family:Inter;font-size:11px; margin-bottom: 4px;">Envío gratis</p>
+            <hr>
+            <p class="truncate-text">Nuevo smartphone con la última tecnología en procesadores.</p>
+            <div class="d-flex">
+                <button style="font-family:Inter; font-size:12px; margin-right: 4px;" class="btn btn-primary" onclick="addToCart(event)">
+                    <i class="bi bi-cart"></i> Comprar
+                </button>
+                <button type="button" style="font-size:12px; font-family:Inter;" class="btn btn-secondary" data-bs-toggle="offcanvas" data-bs-target="#productDrawer" aria-controls="productDrawer">
+                    <i class="bi bi-eye"></i> Ver producto
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="offcanvas offcanvas-end p-2" tabindex="-1" id="productDrawer" aria-labelledby="productDrawerLabel">
+    <div class="offcanvas-header">
+        <h5 id="productDrawerLabel" style="font-family: Inter;">Detalles del Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <!-- Aquí se cargará la información del producto -->
+        <img id="drawer-image" src="" alt="Imagen del Producto" class="img-fluid mb-3">
+        <p id="drawer-price" style="font-family:Inter; font-weight:bold; color:green; font-size:20px; margin-bottom: 4px;"></p>
+        <h5 id="drawer-title" style="font-family:Inter; font-weight:bold; font-size:14px; margin-bottom: 3px;"></h5>
+        <hr>
+        <p id="drawer-description" style="font-family:Inter;font-size:14px; margin-bottom: 4px;" class="mb-3"></p>
+
+        
+    </div>
+
+    <br>
+</div>
+<!-- Card 2 -->
+<div class="col mb-1 mb-4">
+    <div class="card zoom shadow" data-aos="fade-out">
+        <div class="d-flex justify-content-center align-items-center" style="height: 180px;">
+            <img style="border-radius: 26px !important; object-fit: cover; max-width: 100%; max-height: 100%;" src="https://images.fravega.com/f500/24aa339aece1765447ab1bbe8186e949.jpg" class="card-img-top" alt="">
+        </div>
+        <div class="card-body">
+            <p style="font-family:Inter; font-weight:bold; color:green; font-size:20px; margin-bottom: 4px;">$19.990</p>
+            <h5 style="font-family:Inter; font-weight:bold; font-size:14px; margin-bottom: 3px; overflow-y: auto; max-height: 23px;" class="card-title">Auriculares Inalámbricos</h5>
+            <p style="font-family:Inter;font-size:11px; margin-bottom: 4px;">Envío gratis</p>
+            <hr>
+            <p class="truncate-text">Auriculares con cancelación de ruido y alta calidad de sonido.</p>
+            <p style="font-family:Inter; font-weight:bold; color:red; font-size:14px; margin-bottom: 4px;"></p>
+            <div class="d-flex">
+                <button style="font-family:Inter; font-size:12px; margin-right: 4px;" class="btn btn-primary" onclick="addToCart(event)">
+                    <i class="bi bi-cart"></i> Comprar
+                </button>
+                <button type="button" style="font-size:12px; font-family:Inter;" class="btn btn-secondary" data-bs-toggle="offcanvas" data-bs-target="#productDrawer" aria-controls="productDrawer">
+                    <i class="bi bi-eye"></i> Ver producto
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Card 3 -->
+<div class="col mb-1 mb-4">
+    <div class="card zoom shadow" data-aos="fade-out">
+        <div class="d-flex justify-content-center align-items-center" style="height: 180px;">
+            <img style="border-radius: 26px !important; object-fit: cover; max-width: 100%; max-height: 100%;" src="https://www.paris.cl/on/demandware.static/-/Sites-cencosud-master-catalog/default/dw8e4c7986/images/imagenes-productos/741/186864-0000-004.jpg" class="card-img-top" alt="">
+        </div>
+        <div class="card-body">
+            <p style="font-family:Inter; font-weight:bold; color:green; font-size:20px; margin-bottom: 4px;">$890.990</p>
+            <h5 style="font-family:Inter; font-weight:bold; font-size:14px; margin-bottom: 3px; overflow-y: auto; max-height: 23px;" class="card-title">Laptop Gaming</h5>
+            <p style="font-family:Inter;font-size:11px; margin-bottom: 4px;">Envío gratis</p>
+            <hr>
+            <p class="truncate-text">Laptop potente para gaming con gráficos de última generación.</p>
+            <p style="font-family:Inter; font-weight:bold; color:red; font-size:14px; margin-bottom: 4px;"></p>
+            <div class="d-flex">
+                <button style="font-family:Inter; font-size:12px; margin-right: 4px;" class="btn btn-primary" onclick="addToCart(event)">
+                    <i class="bi bi-cart"></i> Comprar
+                </button>
+                <button type="button" style="font-size:12px; font-family:Inter;" class="btn btn-secondary" data-bs-toggle="offcanvas" data-bs-target="#productDrawer" aria-controls="productDrawer">
+                    <i class="bi bi-eye"></i> Ver producto
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Card 4 -->
+<div class="col mb-1 mb-4">
+    <div class="card zoom shadow" data-aos="fade-out">
+        <div class="d-flex justify-content-center align-items-center" style="height: 180px;">
+            <img style="border-radius: 26px !important; object-fit: cover; max-width: 100%; max-height: 100%;" src="https://imagedelivery.net/4fYuQyy-r8_rpBpcY7lH_A/falabellaCL/16642826_01/w=800,h=800,fit=pad" class="card-img-top" alt="">
+        </div>
+        <div class="card-body">
+            <p style="font-family:Inter; font-weight:bold; color:green; font-size:20px; margin-bottom: 4px;">$589.990</p>
+            <h5 style="font-family:Inter; font-weight:bold; font-size:14px; margin-bottom: 3px; overflow-y: auto; max-height: 23px;" class="card-title">Ipad Apple 9"</h5>
+            <p style="font-family:Inter;font-size:11px; margin-bottom: 4px;">Envío gratis</p>
+            <hr>
+            <p class="truncate-text">Tablet ligera y rápida con pantalla de alta resolución.</p>
+            <p style="font-family:Inter; font-weight:bold; color:red; font-size:14px; margin-bottom: 4px;"></p>
+            <div class="d-flex">
+                <button style="font-family:Inter; font-size:12px; margin-right: 4px;" class="btn btn-primary" onclick="addToCart(event)">
+                    <i class="bi bi-cart"></i> Comprar
+                </button>
+                <button type="button" style="font-size:12px; font-family:Inter;" class="btn btn-secondary" data-bs-toggle="offcanvas" data-bs-target="#productDrawer" aria-controls="productDrawer">
+                    <i class="bi bi-eye"></i> Ver producto
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+            <!-- Card 5 -->
+            <div class="col mb-1 mb-4">
+                <div class="card zoom shadow" data-aos="fade-out">
+                    <div class="d-flex justify-content-center align-items-center" style="height: 180px;">
+                        <img style="border-radius: 26px !important; object-fit: cover; max-width: 100%; max-height: 100%;" src="https://cdnx.jumpseller.com/used/image/26732156/resize/960/960?1662067260" class="card-img-top" alt="">
+                    </div>
+                    <div class="card-body">
+                        <p style="font-family:Inter; font-weight:bold; color:green; font-size:20px; margin-bottom: 4px;">$490.990</p>
+                        <h5 style="font-family:Inter; font-weight:bold; font-size:14px; margin-bottom: 3px; overflow-y: auto; max-height: 23px;" class="card-title">Cámara Profesional</h5>
+                        <p style="font-family:Inter;font-size:11px; margin-bottom: 4px;">Envío gratis</p>
+            
+                        <hr>
+                        <p class="truncate-text">Cámara DSLR con lentes intercambiables y alta resolución.</p>
+                        <p style="font-family:Inter; font-weight:bold; color:red; font-size:14px; margin-bottom: 4px;"></p>
+                        
+                        <!-- Botones "Comprar" y "Ver producto" alineados juntos -->
+                        <div class="d-flex">
+                            <button style="font-family:Inter; font-size:12px; margin-right: 4px;" class="btn btn-primary" onclick="addToCart(event)">
+                                <i class="bi bi-cart"></i> Comprar
+                            </button>
+                            <button type="button" style="font-size:12px; font-family:Inter;" class="btn btn-secondary" data-bs-toggle="offcanvas" data-bs-target="#productDrawer" aria-controls="productDrawer">
+                                <i class="bi bi-eye"></i> Ver producto
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        
+        </div>
+
+        <div class="offcanvas offcanvas-end p-3" tabindex="-1" id="cartOffCanvas" aria-labelledby="cartOffCanvasLabel">
+    <div class="offcanvas-header">
+        <h5 id="cartOffCanvasLabel" style="font-family: Inter;">Carrito de Compras</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div id="cartItems">
+            <!-- Los productos del carrito se agregarán aquí dinámicamente -->
+        </div>
+        <hr>
+        <div class="d-flex justify-content-between">
+            <strong>Total:</strong>
+            <span id="cartTotal">$0</span>
+        </div>
+    </div>
+</div>
+
+<!-- Off-Canvas del Carrito -->
+<div class="offcanvas offcanvas-end p-3" tabindex="-1" id="cartOffCanvas" aria-labelledby="cartOffCanvasLabel">
+    <div class="offcanvas-header">
+        <h5 id="cartOffCanvasLabel" style="font-family: Inter;">Carrito de Compras</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div id="cartItems">
+            <!-- Los productos del carrito se agregarán aquí dinámicamente -->
+        </div>
+        <hr>
+        <div class="d-flex justify-content-between">
+            <strong>Total:</strong>
+            <span id="cartTotal">$0</span>
+        </div>
+    </div>
+</div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3" id="productList">
+
+            <!-- Card 1 -->
+<!-- Card 1: Notebook Asus -->
+<div class="col mb-1 mb-4">
+    <div class="card zoom shadow" data-aos="fade-out">
+        <div class="d-flex justify-content-center align-items-center" style="height: 180px;">
+            <img style="border-radius: 26px !important; object-fit: cover; max-width: 100%; max-height: 100%;" src="https://www.asus.com/media/global/gallery/1qq8vmq0mcqfgefj_setting_xxx_0_90_end_2000.png" class="card-img-top" alt="Notebook Asus">
+        </div>
+        <div class="card-body">
+            <p style="font-family:Inter; font-weight:bold; color:green; font-size:20px; margin-bottom: 4px;">$790.990</p>
+            <h5 style="font-family:Inter; font-weight:bold; font-size:14px; margin-bottom: 3px; overflow-y: auto; max-height: 23px;" class="card-title">Notebook Asus VivoBook</h5>
+            <p style="font-family:Inter;font-size:11px; margin-bottom: 4px;">Envío gratis</p>
+            <hr>
+            <p class="truncate-text">Laptop ligera con procesador Intel Core i7 y 16GB de RAM.</p>
+            <div class="d-flex">
+                <button style="font-family:Inter; font-size:12px; margin-right: 4px;" class="btn btn-primary" onclick="addToCart(event)">
+                    <i class="bi bi-cart"></i> Comprar
+                </button>
+                <button type="button" style="font-size:12px; font-family:Inter;" class="btn btn-secondary" data-bs-toggle="offcanvas" data-bs-target="#productDrawer" aria-controls="productDrawer">
+                    <i class="bi bi-eye"></i> Ver producto
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Card 2: Teclado Mecánico -->
+<div class="col mb-1 mb-4">
+    <div class="card zoom shadow" data-aos="fade-out">
+        <div class="d-flex justify-content-center align-items-center" style="height: 180px;">
+            <img style="border-radius: 26px !important; object-fit: cover; max-width: 100%; max-height: 100%;" src="https://fotosol.cl/cdn/shop/products/KUMARA_RGB_REDRAGON_1200x.jpg?v=1598387591" class="card-img-top" alt="Teclado Mecánico">
+        </div>
+        <div class="card-body">
+            <p style="font-family:Inter; font-weight:bold; color:green; font-size:20px; margin-bottom: 4px;">$49.990</p>
+            <h5 style="font-family:Inter; font-weight:bold; font-size:14px; margin-bottom: 3px; overflow-y: auto; max-height: 23px;" class="card-title">Teclado Mecánico RGB</h5>
+            <p style="font-family:Inter;font-size:11px; margin-bottom: 4px;">Envío gratis</p>
+            <hr>
+            <p class="truncate-text">Teclado con iluminación RGB y switches mecánicos.</p>
+            <div class="d-flex">
+                <button style="font-family:Inter; font-size:12px; margin-right: 4px;" class="btn btn-primary" onclick="addToCart(event)">
+                    <i class="bi bi-cart"></i> Comprar
+                </button>
+                <button type="button" style="font-size:12px; font-family:Inter;" class="btn btn-secondary" data-bs-toggle="offcanvas" data-bs-target="#productDrawer" aria-controls="productDrawer">
+                    <i class="bi bi-eye"></i> Ver producto
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Card 3: Monitor Curvo -->
+<div class="col mb-1 mb-4">
+    <div class="card zoom shadow" data-aos="fade-out">
+        <div class="d-flex justify-content-center align-items-center" style="height: 180px;">
+            <img style="border-radius: 26px !important; object-fit: cover; max-width: 100%; max-height: 100%;" src="https://www.alcaplus.cl/media/2023/11/77224503_7282386002.jpeg" class="card-img-top" alt="Monitor Curvo">
+        </div>
+        <div class="card-body">
+            <p style="font-family:Inter; font-weight:bold; color:green; font-size:20px; margin-bottom: 4px;">$290.990</p>
+            <h5 style="font-family:Inter; font-weight:bold; font-size:14px; margin-bottom: 3px; overflow-y: auto; max-height: 23px;" class="card-title">Monitor Curvo 27"</h5>
+            <p style="font-family:Inter;font-size:11px; margin-bottom: 4px;">Envío gratis</p>
+            <hr>
+            <p class="truncate-text">Monitor curvo con resolución 4K y tasa de refresco de 144Hz.</p>
+            <div class="d-flex">
+                <button style="font-family:Inter; font-size:12px; margin-right: 4px;" class="btn btn-primary" onclick="addToCart(event)">
+                    <i class="bi bi-cart"></i> Comprar
+                </button>
+                <button type="button" style="font-size:12px; font-family:Inter;" class="btn btn-secondary" data-bs-toggle="offcanvas" data-bs-target="#productDrawer" aria-controls="productDrawer">
+                    <i class="bi bi-eye"></i> Ver producto
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Card 4: Consola de Videojuegos -->
+<div class="col mb-1 mb-4">
+    <div class="card zoom shadow" data-aos="fade-out">
+        <div class="d-flex justify-content-center align-items-center" style="height: 180px;">
+            <img style="border-radius: 26px !important; object-fit: cover; max-width: 100%; max-height: 100%;" src="https://api.technopolis.bg/medias/Product-details-main-301899.jpg?context=bWFzdGVyfHJvb3R8MTUzMzQxfGltYWdlL2pwZWd8YURJNEwyaGlPUzh6TXpRM016WTVNVGN4TXpVMk5pOVFjbTlrZFdOMExXUmxkR0ZwYkhNdGJXRnBibDh6TURFNE9Ua3VhbkJufDYzZmU2MDdjZTdiMzdjZjk4NzJjODEzYzgyZjhiMDEyNjAwMzlkMWFkYzljMGFlZWE1NzE2M2NlZGJhZTE5ZWU" class="card-img-top" alt="Consola de Videojuegos">
+        </div>
+        <div class="card-body">
+            <p style="font-family:Inter; font-weight:bold; color:green; font-size:20px; margin-bottom: 4px;">$790.990</p>
+            <h5 style="font-family:Inter; font-weight:bold; font-size:14px; margin-bottom: 3px; overflow-y: auto; max-height: 23px;" class="card-title">Consola de Videojuegos</h5>
+            <p style="font-family:Inter;font-size:11px; margin-bottom: 4px;">Envío gratis</p>
+            <hr>
+            <p class="truncate-text">Consola de última generación con gráficos 4K y HDR.</p>
+            <div class="d-flex">
+                <button style="font-family:Inter; font-size:12px; margin-right: 4px;" class="btn btn-primary" onclick="addToCart(event)">
+                    <i class="bi bi-cart"></i> Comprar
+                </button>
+                <button type="button" style="font-size:12px; font-family:Inter;" class="btn btn-secondary" data-bs-toggle="offcanvas" data-bs-target="#productDrawer" aria-controls="productDrawer">
+                    <i class="bi bi-eye"></i> Ver producto
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Card 5: Silla Gamer -->
+<div class="col mb-1 mb-4">
+    <div class="card zoom shadow" data-aos="fade-out">
+        <div class="d-flex justify-content-center align-items-center" style="height: 180px;">
+            <img style="border-radius: 26px !important; object-fit: cover; max-width: 100%; max-height: 100%;" src="https://imagedelivery.net/4fYuQyy-r8_rpBpcY7lH_A/falabellaCL/124416335_01/w=800,h=800,fit=pad" class="card-img-top" alt="Silla Gamer">
+        </div>
+        <div class="card-body">
+            <p style="font-family:Inter; font-weight:bold; color:green; font-size:20px; margin-bottom: 4px;">$120.990</p>
+            <h5 style="font-family:Inter; font-weight:bold; font-size:14px; margin-bottom: 3px; overflow-y: auto; max-height: 23px;" class="card-title">Silla Gamer</h5>
+            <p style="font-family:Inter;font-size:11px; margin-bottom: 4px;">Envío gratis</p>
+            <hr>
+            <p class="truncate-text">Silla ergonómica con soporte lumbar y reclinable.</p>
+            <div class="d-flex">
+                <button style="font-family:Inter; font-size:12px; margin-right: 4px;" class="btn btn-primary" onclick="addToCart(event)">
+                    <i class="bi bi-cart"></i> Comprar
+                </button>
+                <button type="button" style="font-size:12px; font-family:Inter;" class="btn btn-secondary" data-bs-toggle="offcanvas" data-bs-target="#productDrawer" aria-controls="productDrawer">
+                    <i class="bi bi-eye"></i> Ver producto
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+            
+        
+        </div>
+        
+        <nav>
+        <ul class="pagination justify-content-start">
+            <li class="page-item <?php if ($page <= 1) echo 'disabled'; ?>">
+                <a  style="font-family:Inter; font-size:14px;" class="page-link" href="?page=<?php echo $page - 1; ?>">Anterior</a>
+            </li>
+
+                <li class="page-item <?php if ($page == $i) echo 'active'; ?>">
+                    <a style="font-family:Inter;font-size:14px; "class="page-link" href="?page=<?php echo $i; ?>"></a>
+                </li>
+            <li class="page-item <?php if ($page >= $total_pages) echo 'disabled'; ?>">
+                <a  style="font-family:Inter;font-size:14px;" class="page-link" href="?page=<?php echo $page + 1; ?>">Siguiente</a>
+            </li>
+        </ul>
+    </nav>
+    
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const viewProductButtons = document.querySelectorAll('.btn-secondary');
+
+        viewProductButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Obtén la información del producto desde los datos del botón o desde otro lugar
+                const card = this.closest('.card');
+                const image = card.querySelector('.card-img-top').src;
+                const price = card.querySelector('.card-body p').textContent;
+                const title = card.querySelector('.card-body .card-title').textContent;
+                const description = card.querySelector('.card-body .truncate-text').textContent;
+
+                // Actualiza el contenido del drawer
+                document.getElementById('drawer-image').src = image;
+                document.getElementById('drawer-price').textContent = price;
+                document.getElementById('drawer-title').textContent = title;
+                document.getElementById('drawer-description').textContent = description;
+            });
+        });
+    });
+</script>
+<script>
+    // JavaScript para actualizar el contador del carrito
+    function addToCart() {
+        var cartCountElement = document.getElementById('cart-count');
+        var currentCount = parseInt(cartCountElement.textContent, 10);
+        cartCountElement.textContent = currentCount + 1;
+    }
+</script>
+<script>
+    // Array para almacenar los productos del carrito
+    let cart = []; // Array para almacenar los productos del carrito
+
+function addToCart(event) {
+    const button = event.target.closest('button');
+    const card = button.closest('.card');
+    const title = card.querySelector('.card-title').textContent;
+    const price = card.querySelector('.card-body p').textContent;
+
+    // Añadir producto al carrito
+    cart.push({ title, price });
+
+    // Actualizar el contador del carrito
+    const cartCount = document.getElementById('cart-count');
+    cartCount.textContent = cart.length;
+
+    // Actualizar el contenido del carrito en el off-canvas
+    const cartItems = document.getElementById('cartItems');
+    let cartHtml = '';
+    cart.forEach(item => {
+        cartHtml += `<div class="cart-item">
+            <h6>${item.title}</h6>
+            <p>${item.price}</p>
+        </div>`;
+    });
+    cartItems.innerHTML = cartHtml;
+
+    // Actualizar el total del carrito
+    const cartTotal = cart.reduce((total, item) => total + parseFloat(item.price.replace('$', '')), 0);
+    document.getElementById('cartTotal').textContent = `$${cartTotal.toFixed(2)}`;
+}
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+   
+
+
+
+</body>
+</html>
+
